@@ -1,0 +1,10 @@
+git://github.com/mileszs/ack.vim.git
+git://github.com/kien/ctrlp.vim.git
+git://github.com/vim-scripts/synic.vim.git
+git://github.com/godlygeek/tabular.git
+git://github.com/majutsushi/tagbar.git
+git://github.com/vim-scripts/taglist.vim.git
+git://github.com/bitc/vim-bad-whitespace.git
+git://github.com/Lokaltog/vim-powerline.git
+git://github.com/tpope/vim-vividchalk.git
+git://github.com/rphillips/vim-zoomwin.git

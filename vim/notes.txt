@@ -1,0 +1,1 @@
+* Download vimwiki and symlink from its src to ~/.vim/bundle

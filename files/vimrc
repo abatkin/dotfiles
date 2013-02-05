@@ -1,0 +1,81 @@
+call pathogen#infect()
+
+syntax enable
+filetype plugin indent on
+set nocompatible
+
+"if filereadable("$VIMRUNTIME/mswin.vim")
+  :so $VIMRUNTIME/mswin.vim
+"endif
+:behave mswin
+
+set background=dark
+if has("gui_running")
+  set nu
+  set guifont=Liberation\ Mono\ for\ Powerline\ 9
+  set guioptions-=T
+  set lines=50
+  set columns=140
+  let g:Powerline_symbols = 'fancy'
+else
+  let g:Powerline_symbols = 'compatible'
+  set t_Co=256
+endif
+
+colorscheme vividchalk
+
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+set noautowrite
+set hidden
+set autoindent smartindent
+set smarttab
+set history=200
+set incsearch
+set ignorecase
+set hlsearch
+set showmatch
+set nobackup
+
+set encoding=utf-8
+set laststatus=2
+
+set wildignore=*.swp,*.zip,.svn/*,*.class,*.jar
+
+set tags=./tags;/
+
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+let g:buffergator_viewport_split_policy = "B"
+let g:buffergator_autoexpand_on_split = 0
+let g:buffergator_split_size = 0
+let g:buffergator_sort_regime = "mru"
+
+let g:ctrlp_mruf_case_sensitive = 0
+let g:ctrlp_mruf_last_entered = 1
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_working_path_mode = 0
+
+let g:syntastic_perl_efm_program = 'perl /usr/share/vim/vimfiles/perl-support/scripts/efm_perl.pl -c'
+
+let g:vimwiki_list = [
+  \ {'path': '~/Documents/notes', 'ext': '.txt'},
+  \ {'path': '~/dbtool/doc', 'ext': '.txt', 'index': 'README'}
+  \ ]
+
+let g:tagbar_type_vimwiki = {
+  \ 'ctagstype': 'wiki',
+  \ 'sort': 0,
+  \ 'kinds' : [
+    \ 'h:header',
+  \ ]
+  \}
+
+let tlist_vimwiki_settings = "wiki;h:header"
+let g:vimwiki_global_ext=0
+
+nmap <silent> <leader>b :CtrlPBuffer<cr>
+

@@ -1,0 +1,22 @@
+[core]
+  editor = vim
+  pager = less
+[color]
+  ui = auto
+  branch = true
+  diff = true
+  grep = true
+  showbranch = true
+  status = true
+[user]
+  email = adam@batkin.net
+  name = Adam Batkin
+
+[include]
+  path = ~/.git-private
+
+[url "git://anongit.kde.org/"]
+      insteadOf = kde:
+[url "git@git.kde.org:"]
+      pushInsteadOf = kde:
+
