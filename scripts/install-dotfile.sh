@@ -27,6 +27,6 @@ if [[ -e "$FILENAME_TO" ]]; then
 fi
 
 if [ $INSTALL_FILE ]; then
-  ln -s "$FILENAME_TO" "$FILENAME_FROM"
+  ln -s "$FILENAME_FROM" "$FILENAME_TO"
 fi
 
