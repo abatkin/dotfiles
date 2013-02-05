@@ -4,8 +4,8 @@ if [[ -e ~/.vim/autoload/pathogen.vim ]]; then
   echo "Pathogen is already installed"
 else
   echo "Installing Pathogen"
-  echo mkdir -p ~/.vim/autoload
-  echo curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  mkdir -p ~/.vim/autoload
+  curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 fi
 
 $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/vim after .vim/after
@@ -18,7 +18,7 @@ for BUNDLE_URL in $(cat $DOTFILES_ROOT/vim/bundles.txt); do
     echo "$BUNDLE_NAME is already installed"
   else
     echo "Adding bundle for $BUNDLE_NAME"
-    echo git clone "$BUNDLE_URL" $BUNDLE_DIR/$BUNDLE_NAME
+    git clone "$BUNDLE_URL" $BUNDLE_DIR/$BUNDLE_NAME
   fi
 done
 

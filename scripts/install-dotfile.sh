@@ -23,10 +23,10 @@ fi
 
 if [[ -e "$FILENAME_TO" ]]; then
   echo "Backing up old $FILE_TO to $FILE_TO.old"
-  echo mv "$FILENAME_TO" "$FILENAME_BACKUP"
+  mv "$FILENAME_TO" "$FILENAME_BACKUP"
 fi
 
 if [ $INSTALL_FILE ]; then
-  echo ln -s "$FILENAME_TO" "$FILENAME_FROM"
+  ln -s "$FILENAME_TO" "$FILENAME_FROM"
 fi
 
