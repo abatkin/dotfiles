@@ -8,3 +8,6 @@ git://github.com/bitc/vim-bad-whitespace.git
 git://github.com/Lokaltog/vim-powerline.git
 git://github.com/tpope/vim-vividchalk.git
 git://github.com/rphillips/vim-zoomwin.git
+git://github.com/Valloric/YouCompleteMe.git
+git://github.com/scrooloose/syntastic.git
+git://github.com/mihaifm/bck.git
