@@ -81,3 +81,17 @@ let g:vimwiki_global_ext=0
 
 nmap <silent> <leader>b :CtrlPBuffer<cr>
 
+vnoremap <leader>q :<c-u>call <SID>QuoteLines()<cr>
+vnoremap <leader>j :<c-u>call <SID>JoinLines()<cr>
+vmap <leader>s <leader>qgv<leader>j
+
+function! s:JoinLines()
+  silent! execute "normal! gv:\<c-u>'<,'>-1s/\\v$/,/g\<cr>gvJ"
+endfunction
+
+function! s:QuoteLines()
+  silent! execute "normal! gv:s/\\v(^\\s*)([^[:space:]].{-})(\\s*$)/\\1'\\2'\\3/\<CR>"
+endfunction
+
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
