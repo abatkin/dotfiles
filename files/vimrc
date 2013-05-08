@@ -94,12 +94,9 @@ endfunction
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " Fix copy and paste
-map <C-V> "+gP
 map <S-Insert> "+gP
-cmap <C-V> <C-R>+
 cmap <S-Insert> <C-R>+
-exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
-imap <S-Insert> <C-V>
+exe 'inoremap <script> <S-Insert>' paste#paste_cmd['i']
 
 " Select All (Visual)
 noremap <C-A> ggVG
