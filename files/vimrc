@@ -79,8 +79,6 @@ let g:tagbar_type_vimwiki = {
 let tlist_vimwiki_settings = "wiki;h:header"
 let g:vimwiki_global_ext=0
 
-nmap <silent> <leader>b :CtrlPBuffer<cr>
-
 vnoremap <leader>q :<c-u>call <SID>QuoteLines()<cr>
 vnoremap <leader>j :<c-u>call <SID>JoinLines()<cr>
 vmap <leader>s <leader>qgv<leader>j
@@ -94,4 +92,15 @@ function! s:QuoteLines()
 endfunction
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" Fix copy and paste
+map <C-V> "+gP
+map <S-Insert> "+gP
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
+exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
+imap <S-Insert> <C-V>
+
+" Select All (Visual)
+noremap <C-A> ggVG
 
