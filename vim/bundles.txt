@@ -11,3 +11,4 @@ git://github.com/rphillips/vim-zoomwin.git
 git://github.com/Valloric/YouCompleteMe.git
 git://github.com/scrooloose/syntastic.git
 git://github.com/mihaifm/bck.git
+git://github.com/jeetsukumaran/vim-buffergator.git
