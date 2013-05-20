@@ -14,7 +14,8 @@ FILENAME_FROM="$FILE_DIR/$FILE_FROM"
 FILENAME_TO=~/"$FILE_TO"
 FILENAME_BACKUP="$FILENAME_TO.old"
 
-if [[ -L "$FILENAME_TO" ]] && realpath "$FILENAME_TO" | grep "$DOTFILES_DIR" > /dev/null 2>&1; then
+REAL_TO_DIR=$(cd $(dirname $FILENAME_TO); pwd -P)
+if [[ -L "$FILENAME_TO" ]] && echo "$REAL_TO_DIR" | grep "$DOTFILES_DIR" > /dev/null 2>&1; then
   echo "$FILE_TO looks like it is already installed"
   exit 0
 fi
