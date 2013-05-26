@@ -16,7 +16,7 @@ FILENAME_BACKUP="$FILENAME_TO.old"
 
 REAL_TO_DIR=$(cd $(dirname $FILENAME_TO); pwd -P)
 if [[ -L "$FILENAME_TO" ]] && echo "$REAL_TO_DIR" | grep "$DOTFILES_DIR" > /dev/null 2>&1; then
-  echo "$FILE_TO looks like it is already installed"
+#  echo "$FILE_TO looks like it is already installed"
   exit 0
 fi
 
@@ -25,5 +25,6 @@ if [[ -e "$FILENAME_TO" ]]; then
   mv "$FILENAME_TO" "$FILENAME_BACKUP"
 fi
 
+echo "Setting up $FILENAME_TO"
 ln -s "$FILENAME_FROM" "$FILENAME_TO"
 
