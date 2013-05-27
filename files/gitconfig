@@ -21,7 +21,7 @@
       pushInsteadOf = kde:
 
 [push]
-	default = simple
+	default = upstream
 
 [alias]
   assume   = update-index --assume-unchanged
