@@ -1,5 +1,9 @@
 local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
-local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)$(git_prompt_short_sha)'
+local git_branch
+
+if [[ "$DISABLE_GIT_PROMPT" != "true" ]]; then
+  git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)$(git_prompt_short_sha)'
+fi
 
 ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$fg[red]%}("
 ZSH_THEME_GIT_PROMPT_SHA_AFTER=")%{$reset_color%}"
