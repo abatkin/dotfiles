@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if [[ ! -e ~/.vim/autoload/pathogen.vim ]]; then
   echo "Installing Pathogen"
