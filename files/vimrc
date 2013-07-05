@@ -105,3 +105,11 @@ exe 'inoremap <script> <S-Insert>' paste#paste_cmd['i']
 " Select All (Visual)
 noremap <C-A> ggVG
 
+"This allows for change paste motion cp{motion}
+"Borrowed from http://stackoverflow.com/questions/2471175/vim-replace-word-with-contents-of-paste-buffer
+nmap <silent> cp :set opfunc=ChangePaste<CR>g@
+function! ChangePaste(type, ...)
+    silent exe "normal! `[v`]\"_c"
+    silent exe "normal! p"
+endfunction
+
