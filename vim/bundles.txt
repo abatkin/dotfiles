@@ -16,3 +16,4 @@ git://github.com/tpope/vim-markdown.git
 git://github.com/sollidsnake/vterm.git
 git://github.com/tpope/vim-characterize.git
 git://github.com/tpope/vim-commentary.git
+git://github.com/elzr/vim-json.git
