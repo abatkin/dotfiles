@@ -25,4 +25,4 @@ function collapse_pwd {
 }
 
 PROMPT='%{$fg[green]%}[%!]%{$reset_color%}%{$fg[magenta]%}%n%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%} %{$reset_color%}%{$fg[cyan]%}${PWD/#$HOME/~}%{$reset_color%}%{$fg[red]%}%{$reset_color%}%{$fg[cyan]%}>%{$reset_color%} '
-RPROMPT=" ${return_code} ${git_branch} \$(vi_mode_prompt_info)"
+RPROMPT=" ${return_code} ${git_branch}"
