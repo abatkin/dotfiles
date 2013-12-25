@@ -3,8 +3,7 @@ export VISUAL=vim
 export PAGER=less
 
 # Also setup JAVA_HOME, ANT_HOME, PATH
-export ANT_HOME=$HOME/local/ant-1.8
-export JAVA_HOME=$HOME/local/jdk1.7
-
-export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$PATH
+[[ -n $MAVEN_HOME && -e $MAVEN_HOME ]] && export PATH="$MAVEN_HOME/bin:$PATH"
+[[ -n $ANT_HOME && -e $ANT_HOME ]] && export PATH="$ANT_HOME/bin:$PATH"
+[[ -n $JAVA_HOME && -e $JAVA_HOME ]] && export PATH="$JAVA_HOME/bin:$PATH"
 
