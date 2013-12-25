@@ -8,4 +8,6 @@ My dotfiles
  * The file `~/.dotfiles-local` can be used to make local changes during installation
    * Set `BLACKLIST_VIM_MODULES` to a list of VIM modules to skip installing
  * `~/.zshrc-local` is for additions AFTER all other ZSH scripts have been run
+ * `~/.zshrc-local-pre` is for additions BEFORE all other ZSH scripts have been run
+   * In particular, set `JAVA_HOME`, `ANT_HOME` and `MAVEN_HOME` here
 
