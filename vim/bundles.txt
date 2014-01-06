@@ -17,4 +17,5 @@ git://github.com/sollidsnake/vterm.git
 git://github.com/tpope/vim-characterize.git
 git://github.com/tpope/vim-commentary.git
 git://github.com/elzr/vim-json.git
-https://github.com/abatkin/highlight.vim.git
+git://github.com/abatkin/highlight.vim.git
+git://github.com/vimwiki/vimwiki.git
