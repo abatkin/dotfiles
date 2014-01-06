@@ -2,7 +2,7 @@
 
 cd ~/local/eclipse
 
-export GDK_NATIVE_WINDOWS=true
+#export GDK_NATIVE_WINDOWS=true
 export GTK2_RC_FILES=~/.eclipse-gtkrc:~/.gtkrc-2.0
 exec ./eclipse -vm $JAVA_HOME/bin "$@"
 
