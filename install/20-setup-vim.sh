@@ -7,7 +7,7 @@ fi
 if [[ ! -e ~/.vim/autoload/pathogen.vim ]]; then
   echo "Installing Pathogen"
   mkdir -p ~/.vim/autoload
-  curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  curl -Sso ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
   cat "$DOTFILES_ROOT/vim/notes.txt"
 fi
 
