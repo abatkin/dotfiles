@@ -1,6 +1,9 @@
 bindkey '^[[B' down-line-or-history
 bindkey '^[[A' up-line-or-history
 
+bindkey '^[OB' down-line-or-history
+bindkey '^[OA' up-line-or-history
+
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
