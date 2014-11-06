@@ -4,7 +4,7 @@ if [[ -e ~/.dotfiles-local ]]; then
   . ~/.dotfiles-local
 fi
 
-if [[ ! -e ~/.vim/autoload/pathogen.vim ]]; then
+if [[ ! -e ~/.vim/autoload/pathogen.vim && ! "$LOCAL_ONLY" == "true" ]]; then
   echo "Installing Pathogen"
   mkdir -p ~/.vim/autoload
   curl -Sso ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
@@ -14,6 +14,10 @@ fi
 $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/vim after .vim/after
 
 BUNDLE_DIR=~/.vim/bundle
+
+if [[ "$LOCAL_ONLY" == "true" ]]; then
+  exit 0
+fi
 
 for BUNDLE_URL in $(cat $DOTFILES_ROOT/vim/bundles.txt); do
   BUNDLE_NAME=$(echo "$BUNDLE_URL" | sed -e 's/.*\///' -e 's/\.git$//')
