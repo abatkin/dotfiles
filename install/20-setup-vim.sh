@@ -21,20 +21,24 @@ fi
 
 for BUNDLE_URL in $(cat $DOTFILES_ROOT/vim/bundles.txt); do
   BUNDLE_NAME=$(echo "$BUNDLE_URL" | sed -e 's/.*\///' -e 's/\.git$//')
-  if [[ ! -d $BUNDLE_DIR/$BUNDLE_NAME ]]; then
-    SKIP_MODULE=0
-    for EXCLUDE in $(echo $BLACKLIST_VIM_MODULES); do
-      if [[ "$EXCLUDE" == "$BUNDLE_NAME" ]]; then
-        SKIP_MODULE=1
-      fi
-    done
+  SKIP_MODULE=0
+  for EXCLUDE in $(echo $BLACKLIST_VIM_MODULES); do
+    if [[ "$EXCLUDE" == "$BUNDLE_NAME" ]]; then
+      SKIP_MODULE=1
+    fi
+  done
 
-    if [[ $SKIP_MODULE == 0 ]]; then
+  if [[ $SKIP_MODULE == 0 ]]; then
+    if [[ ! -d $BUNDLE_DIR/$BUNDLE_NAME ]]; then
       echo "Adding bundle for $BUNDLE_NAME"
       git clone "$BUNDLE_URL" $BUNDLE_DIR/$BUNDLE_NAME
     else
-      echo "Skipping locally blacklisted Vim module $BUNDLE_NAME"
+      pushd $BUNDLE_DIR/$BUNDLE_NAME
+      git pull
+      popd
     fi
+  else
+    echo "Skipping locally blacklisted Vim module $BUNDLE_NAME"
   fi
 done
 
