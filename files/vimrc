@@ -20,9 +20,8 @@ if has("gui_running")
   set guioptions-=T
   set lines=50
   set columns=140
-  let g:Powerline_symbols = 'fancy'
+  let g:airline_powerline_fonts = 1
 else
-  let g:Powerline_symbols = 'compatible'
   set t_Co=256
 endif
 
