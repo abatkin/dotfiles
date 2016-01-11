@@ -19,3 +19,4 @@ git://github.com/tpope/vim-commentary.git
 git://github.com/elzr/vim-json.git
 git://github.com/abatkin/highlight.vim.git
 git://github.com/vimwiki/vimwiki.git
+git://github.com/tpope/vim-fugitive.git
