@@ -22,6 +22,7 @@ if has("gui_running")
   set columns=140
   let g:airline_powerline_fonts = 1
 else
+  let g:airline_powerline_fonts = 1
   set t_Co=256
 endif
 
