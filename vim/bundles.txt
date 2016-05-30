@@ -20,3 +20,8 @@ git://github.com/elzr/vim-json.git
 git://github.com/abatkin/highlight.vim.git
 git://github.com/vimwiki/vimwiki.git
 git://github.com/tpope/vim-fugitive.git
+git://github.com/guns/vim-clojure-highlight.git
+git://github.com/tpope/vim-salve.git
+git://github.com/kien/rainbow_parentheses.vim.git
+git://github.com/guns/vim-clojure-static.git
+git://github.com/tpope/vim-fireplace.git
