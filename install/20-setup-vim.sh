@@ -48,7 +48,7 @@ while IFS="\n" read -r BUNDLE_LINE || [[ -n "$BUNDLE_LINE" ]]; do
         if [[ $CURRENT_REMOTE_URL == $BUNDLE_URL ]]; then
           git pull
         else
-          echo "Warning: Bundle $BUNDLE_NAME appears to have switched remotes ($CURRENT_REMOTE => $BUNDLE_URL)"
+          echo "Warning: Bundle $BUNDLE_NAME appears to have switched remotes ($CURRENT_REMOTE_URL => $BUNDLE_URL)"
         fi
       fi
       popd
