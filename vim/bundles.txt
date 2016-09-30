@@ -5,7 +5,7 @@ git://github.com/godlygeek/tabular.git
 git://github.com/majutsushi/tagbar.git
 git://github.com/vim-scripts/taglist.vim.git
 git://github.com/bitc/vim-bad-whitespace.git
-git://github.com/bling/vim-airline
+git://github.com/vim-airline/vim-airline
 git://github.com/tpope/vim-vividchalk.git
 git://github.com/rphillips/vim-zoomwin.git
 git://github.com/Valloric/YouCompleteMe.git
