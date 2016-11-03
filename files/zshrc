@@ -29,7 +29,7 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cdr zaw zsh-syntax-highlighting)
+plugins=(git-extras cdr zaw zsh-syntax-highlighting)
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
