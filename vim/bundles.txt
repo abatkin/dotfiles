@@ -25,3 +25,4 @@ git://github.com/tpope/vim-salve.git
 git://github.com/kien/rainbow_parentheses.vim.git
 git://github.com/guns/vim-clojure-static.git
 git://github.com/tpope/vim-fireplace.git
+https://github.com/rust-lang/rust.vim.git
