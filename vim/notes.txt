@@ -1,3 +1,3 @@
 To setup YouCompleteMe, use something like:
-./install.py --clang-completer --gocode-completer --tern-completer
+./install.py --clang-completer --gocode-completer --tern-completer --racer-completer
 
