@@ -3,6 +3,7 @@
   pager = less -i
 	autocrlf = false
 	quotepath = false
+	askpass = 
 [color]
   ui = auto
   branch = true
