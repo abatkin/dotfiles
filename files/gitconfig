@@ -2,6 +2,7 @@
   editor = vim
   pager = less -i
 	autocrlf = false
+	quotepath = false
 [color]
   ui = auto
   branch = true
