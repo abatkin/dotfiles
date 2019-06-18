@@ -11,3 +11,9 @@ My dotfiles
  * `~/.zshrc-local-pre` is for additions BEFORE all other ZSH scripts have been run
    * In particular, set `JAVA_HOME`, `ANT_HOME` and `MAVEN_HOME` here
 
+# Interesting Software #
+
+* [jq](https://stedolan.github.io/jq/) - JSON query/formatting tool
+* [fd](https://github.com/sharkdp/fd) - `find` alternative
+* [bat](https://github.com/sharkdp/bat) - `cat` alternative
+
