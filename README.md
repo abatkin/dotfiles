@@ -16,4 +16,5 @@ My dotfiles
 * [jq](https://stedolan.github.io/jq/) - JSON query/formatting tool
 * [fd](https://github.com/sharkdp/fd) - `find` alternative
 * [bat](https://github.com/sharkdp/bat) - `cat` alternative
+* [ack](https://beyondgrep.com/) - `grep` alternative
 
