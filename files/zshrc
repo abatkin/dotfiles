@@ -26,15 +26,14 @@ DISABLE_LS_COLORS="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
+if [[ -e $HOME/.zshrc-local-pre ]]; then
+  . $HOME/.zshrc-local-pre
+fi
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git-extras cdr zaw zsh-syntax-highlighting aws rust cargo)
-autoload -U compinit && compinit
-
-if [[ -e $HOME/.zshrc-local-pre ]]; then
-  . $HOME/.zshrc-local-pre
-fi
 
 source $ZSH/oh-my-zsh.sh
 
