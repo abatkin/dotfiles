@@ -1,6 +1,6 @@
 [core]
   editor = vim
-  pager = less -i
+  pager = less -FRXi
 	autocrlf = false
 	quotepath = false
 	askpass = 
