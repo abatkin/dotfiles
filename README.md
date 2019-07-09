@@ -21,4 +21,5 @@ My dotfiles
 * [ack](https://beyondgrep.com/) - `grep` alternative
 * [ripgrep](https://github.com/BurntSushi/ripgrep) - Another `grep` alternative
 * [dua-cli](https://github.com/Byron/dua-cli) - Interactive `du`
+* [sd](https://github.com/chmln/sd) - Find and replace
 
