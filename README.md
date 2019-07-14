@@ -13,14 +13,16 @@ My dotfiles
 
 # Interesting Software #
 
-* [jq](https://stedolan.github.io/jq/) - JSON query/formatting tool
-* [fd](https://github.com/sharkdp/fd) - `find` alternative
-* [exa](https://the.exa.website/) - `ls` alternative
-* [skim](https://github.com/lotabout/skim) - interactive fuzzy finder
-* [bat](https://github.com/sharkdp/bat) - `cat` alternative
-* [ack](https://beyondgrep.com/) - `grep` alternative
-* [ripgrep](https://github.com/BurntSushi/ripgrep) - Another `grep` alternative
-* [dua-cli](https://github.com/Byron/dua-cli) - Interactive `du`
-* [sd](https://github.com/chmln/sd) - Find and replace
-* [hexyl](https://github.com/sharkdp/hexyl) - Command line hex viewer
+| Command | URL                                   | Description                | RPM     | Cargo   |
+|---------|---------------------------------------|----------------------------|---------|---------|
+| jq      | https://stedolan.github.io/jq/        | JSON Query/formatting tool | jq      | -       |
+| fd      | https://github.com/sharkdp/fd         | `find` alternative         | fd-find | fd-find |
+| exa     | https://the.exa.website/              | `ls` alternative           | exa     | exa     |
+| skim    | https://github.com/lotabout/skim      | Interactive fuzzy finder   | skim    | skim    |
+| bat     | https://github.com/sharkdp/bat        | Fancy `cat`                | bat     | bat     |
+| ack     | https://beyondgrep.com/               | `grep` alternative         | ack     | -       |
+| ripgrep | https://github.com/BurntSushi/ripgrep | Another `grep` alternative | ripgrep | ripgrep |
+| dua     | https://github.com/Byron/dua-cli      | Interactive `du`           | -       | dua-cli |
+| sd      | https://github.com/chmln/sd           | Find and replace in files  | sd      | sd      |
+| hexyl   | https://github.com/sharkdp/hexyl      | Command line hex viewer    | -       | hexyl   |
 
