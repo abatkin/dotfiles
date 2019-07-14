@@ -114,5 +114,7 @@ function! ChangePaste(type, ...)
     silent exe "normal! p"
 endfunction
 
+let g:vim_markdown_folding_style_pythonic = 1
+
 set nomodeline
 

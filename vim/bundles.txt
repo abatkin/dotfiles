@@ -12,7 +12,7 @@ https://github.com/Valloric/YouCompleteMe.git
 https://github.com/scrooloose/syntastic.git
 https://github.com/mihaifm/bck.git
 https://github.com/jeetsukumaran/vim-buffergator.git
-https://github.com/tpope/vim-markdown.git
+https://github.com/plasticboy/vim-markdown.git
 https://github.com/sollidsnake/vterm.git
 https://github.com/tpope/vim-characterize.git
 https://github.com/tpope/vim-commentary.git
