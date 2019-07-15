@@ -35,6 +35,9 @@
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --patch --reverse --topo-order _ribbon..origin/master
   vdiff = difftool -y -t vimdiff
+  changed = ls-files --modified --others --exclude-standard
+  #addi = "!git changed | sk --print0 -m | xargs -0 -t sh -c '</dev/tty git add \"$@\"' git"
+  addi = "!git -c color.status=always status --no-renames --short | sk --print0 -m --height 50% --ansi --nth 2..,.. --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' --border | cut -z -c4- | xargs -0 -t sh -c '</dev/tty git add \"$@\"' git"
 
 [credential]
 	helper = store
