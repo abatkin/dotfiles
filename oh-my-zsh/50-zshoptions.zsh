@@ -4,6 +4,7 @@ zle -A .self-insert self-insert
 DIRSTACKSIZE=20
 
 zstyle ':filter-select' case-insensitive yes # for zaw
+bindkey "^Zc" zaw-cdr
 
 zle -C complete-files complete-word _generic
 zstyle ':completion:complete-files:*' completer _files
