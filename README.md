@@ -10,6 +10,7 @@ My dotfiles
  * `~/.zshrc-local` is for additions AFTER all other ZSH scripts have been run
  * `~/.zshrc-local-pre` is for additions BEFORE all other ZSH scripts have been run
    * In particular, set `JAVA_HOME`, `ANT_HOME` and `MAVEN_HOME` here
+   * Also useful are updates to `fpath` (`fpath=(~/foo $fpath)`) and plugins (`plugins=(a b c)`)
 
 # Interesting Software #
 
