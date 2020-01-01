@@ -26,3 +26,4 @@ https://github.com/kien/rainbow_parentheses.vim.git
 https://github.com/guns/vim-clojure-static.git
 https://github.com/tpope/vim-fireplace.git
 https://github.com/rust-lang/rust.vim.git
+https://github.com/cespare/vim-toml.git
