@@ -1,0 +1,2 @@
+# Prevent screen from clearing on logout
+alias clear=""
