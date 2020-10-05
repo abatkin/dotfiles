@@ -43,3 +43,5 @@
 	helper = store
 [fetch]
 	prune = true
+[pager]
+  branch = false
