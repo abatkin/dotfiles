@@ -37,4 +37,8 @@ plugins=($plugins git-extras cdr zaw zsh-syntax-highlighting rust cargo)
 
 source $ZSH/oh-my-zsh.sh
 
+if [[ -e $HOME/.zshrc-local-post ]]; then
+  source $HOME/.zshrc-local-post
+fi
+
 # Customize to your needs...
