@@ -114,6 +114,12 @@ function! ChangePaste(type, ...)
     silent exe "normal! p"
 endfunction
 
+let g:ackprg = "rg --vimgrep"
+let g:ack_default_opts = "--smart-case"
+let g:ack_autoclose = 0
+let g:ackhighlight = 1
+
+
 let g:vim_markdown_folding_style_pythonic = 1
 
 set nomodeline
