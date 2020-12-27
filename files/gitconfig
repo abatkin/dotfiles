@@ -26,6 +26,9 @@
 [push]
 	default = upstream
 
+[pull]
+	ff = only
+
 [alias]
   assume   = update-index --assume-unchanged
   unassume = update-index --no-assume-unchanged
@@ -45,3 +48,4 @@
 	prune = true
 [pager]
   branch = false
+
