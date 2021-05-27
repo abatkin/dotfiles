@@ -4,9 +4,6 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[OB' down-line-or-history
 bindkey '^[OA' up-line-or-history
 
-bindkey '^[OD' backward-word
-bindkey '^[OC' forward-word
-
 bindkey -M viins '^r' history-incremental-search-backward
 bindkey -M vicmd '^r' history-incremental-search-backward
 
