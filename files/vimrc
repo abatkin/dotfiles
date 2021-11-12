@@ -69,7 +69,7 @@ let g:ctrlp_working_path_mode = 0
 let g:syntastic_perl_efm_program = 'perl /usr/share/vim/vimfiles/perl-support/scripts/efm_perl.pl -c'
 
 let g:vimwiki_list = [
-  \ {'path': '~/Documents/notes', 'ext': '.txt'},
+  \ {'path': '~/Documents/notes', 'ext': '.md'},
   \ {'path': '~/dbtool/doc', 'ext': '.txt', 'index': 'README'}
   \ ]
 
@@ -121,6 +121,8 @@ let g:ackhighlight = 1
 
 
 let g:vim_markdown_folding_style_pythonic = 1
+
+let g:airline#extensions#taglist#enabled = 0
 
 set nomodeline
 
