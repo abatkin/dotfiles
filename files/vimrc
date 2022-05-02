@@ -15,7 +15,7 @@ if has("gui_running")
   if has("gui_macvim")
     set guifont=Liberation\ Mono\ for\ Powerline:h9
   else
-    set guifont="FiraCode Nerd Font 9"
+    set guifont=FiraCode\ Nerd\ Font\ 10
   endif
   set guioptions-=T
   set lines=50
