@@ -15,9 +15,6 @@
   email = adam@batkin.net
   name = Adam Batkin
 
-[include]
-  path = ~/.git-private
-
 [url "git://anongit.kde.org/"]
       insteadOf = kde:
 [url "git@git.kde.org:"]
@@ -51,3 +48,7 @@
 
 [init]
 	defaultBranch = main
+
+[include]
+  path = ~/.git-private
+
