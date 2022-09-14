@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd $HOME
+
+ROFI_EXECUTABLE="/usr/bin/rofi"
+
+exec $ROFI_EXECUTABLE -modi combi,dirs,filebrowser,drun,ssh -show combi -combi-modi drun,ssh,dirs -modes "dirs:/home/abatkin/bin/dirs.py" -combi-hide-mode-prefix "$@"
