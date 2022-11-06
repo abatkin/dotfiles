@@ -7,6 +7,7 @@ import subprocess
 def get_entries():
     return {
         "Documents": folder("/home/abatkin/Documents"),
+        "Desktop": folder("/home/abatkin/Desktop"),
         "Applications": folder("/home/abatkin/Applications"),
         "Downloads": folder("/home/abatkin/Downloads"),
         "3D": folder("/home/abatkin/Documents/3d"),
