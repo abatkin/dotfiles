@@ -2,6 +2,6 @@
 
 cd $HOME
 
-ROFI_EXECUTABLE="${ROFI_EXECUTABLE:-rofi}"
+ROFI_EXECUTABLE="~/bin/rofi"
 
 exec $ROFI_EXECUTABLE -modi combi,dirs,filebrowser,drun,ssh -show combi -combi-modi drun,ssh,dirs -modes "combi,dirs:/home/abatkin/bin/dirs.py" -combi-hide-mode-prefix "$@"
