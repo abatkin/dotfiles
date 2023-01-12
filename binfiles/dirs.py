@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!env python3
 
 import sys
 import subprocess
