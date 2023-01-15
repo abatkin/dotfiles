@@ -8,7 +8,8 @@ $INSTALL_DOTFILE $CONFS_DIR kitty.conf .config/kitty/kitty.conf
 $INSTALL_DOTFILE $CONFS_DIR starship.toml .config/starship.toml
 
 if [[ ! -e $HOME/.config/launch-entries.ini ]]; then
-  $INSTALL_DOTFILE $CONFS_DIR launch-entries.ini .config/launch-entries.ini
+  echo "Copying template for .config/launch-entries.ini"
+  cp $CONFS_DIR/launch-entries.ini $HOME/.config/launch-entries.ini
 fi
 
 
