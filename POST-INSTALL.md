@@ -10,6 +10,7 @@
 1. Install [rust](https://www.rust-lang.org/tools/install)
 2. Install [Starship](https://starship.rs/) `cargo install starship --locked`
 3. Install [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
+4. Install google-noto-emoji-fonts and google-noto-emoji-color-fonts - apparently FiraCode Nerd Font does not in fact contain all the required emojis, and freetype (or whatever) doesn't always fallback properly. The latter in particular is needed for kitty
 
 Put the following into `~/.zshrc-local-pre`:
 
