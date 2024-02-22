@@ -1,8 +1,17 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$all$directory$character"
+
 [status]
-disabled=false
+disabled = false
+
+[character]
+format = "[ ](fg:blue bg:black)"
 
 [directory]
-truncation_length=0
-truncate_to_repo=false
-repo_root_style='blue'
-
+truncation_length = 0
+truncate_to_repo = false
+repo_root_style = 'bg:blue fg:white bold underline'
+style = "fg:white bg:blue"
+format = "[ $path ]($style)"
+repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ]($style)[$read_only]($read_only_style)"
