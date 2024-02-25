@@ -28,6 +28,14 @@ return {
 				desc = "ToggleTerm (horizontal)",
 			},
 			{
+				"<leader>Tt",
+				function()
+					local count = vim.v.count1
+					require("toggleterm").toggle(count, 10, vim.loop.cwd(), "tab")
+				end,
+				desc = "ToggleTerm (tab)",
+			},
+			{
 				"<leader>Tn",
 				"<cmd>ToggleTermSetName<cr>",
 				desc = "Set term name",
