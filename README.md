@@ -18,7 +18,7 @@ My dotfiles
 |---------|---------------------------------------|----------------------------|---------|---------|
 | jq      | https://stedolan.github.io/jq/        | JSON Query/formatting tool | jq      | -       |
 | fd      | https://github.com/sharkdp/fd         | `find` alternative         | fd-find | fd-find |
-| exa     | https://the.exa.website/              | `ls` alternative           | exa     | exa     |
+| exa     | https://eza.rocks/                    | `ls` alternative           | eza     | eza     |
 | skim    | https://github.com/lotabout/skim      | Interactive fuzzy finder   | skim    | skim    |
 | bat     | https://github.com/sharkdp/bat        | Fancy `cat`                | bat     | bat     |
 | ack     | https://beyondgrep.com/               | `grep` alternative         | ack     | -       |
