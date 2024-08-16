@@ -5,9 +5,10 @@ local config = wezterm.config_builder()
 config.initial_rows = 60
 config.initial_cols = 150
 
-config.font = wezterm.font("FiraCode Nerd Font Mono")
+config.font =
+	wezterm.font_with_fallback({ "FiraCode Nerd Font", "JetBrains Mono", "Nerd Font Symbols", "Noto Color Emoji" })
 config.font_size = 10
-config.freetype_load_target = "Light"
+-- config.freetype_load_target = "Light"
 -- config.hide_mouse_cursor_when_typing = false
 
 config.keys = {
@@ -30,6 +31,18 @@ config.keys = {
 		key = "RightArrow",
 		mods = "SHIFT|CTRL",
 		action = act.MoveTabRelative(1),
+	},
+	{
+		key = "Insert",
+		mods = "SHIFT",
+		action = act.PasteFrom("Clipboard"),
+	},
+}
+
+config.mouse_bindings = {
+	{
+		event = { Down = { streak = 1, button = "Middle" } },
+		action = act.PasteFrom("Clipboard"),
 	},
 }
 
