@@ -2,8 +2,8 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
 
-config.initial_rows = 60
 config.initial_cols = 150
+config.initial_rows = 50
 
 config.font =
 	wezterm.font_with_fallback({ "FiraCode Nerd Font", "JetBrains Mono", "Nerd Font Symbols", "Noto Color Emoji" })
