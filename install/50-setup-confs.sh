@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CONFS_DIR=$DOTFILES_ROOT/confs
 INSTALL_DOTFILE=$DOTFILES_SCRIPTS/install-dotfile.sh
