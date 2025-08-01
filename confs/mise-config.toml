@@ -1,0 +1,11 @@
+[tools]
+usage = "latest"
+
+[settings]
+experimental = true
+auto_install = false
+exec_auto_install = false
+not_found_auto_install = false
+
+[settings.python]
+uv_venv_auto = true
