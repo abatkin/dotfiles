@@ -6,6 +6,7 @@ experimental = true
 auto_install = false
 exec_auto_install = false
 not_found_auto_install = false
+idiomatic_version_file_enable_tools = []
 
 [settings.python]
 uv_venv_auto = true
