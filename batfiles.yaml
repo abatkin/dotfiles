@@ -1,18 +1,18 @@
 files:
 # 10-download-oh-my-zsh.sh
-  - source: git+https://github.com/robbyrussell/oh-my-zsh.git
+  - repo: https://github.com/robbyrussell/oh-my-zsh.git
     dest: ~/.oh-my-zsh
 
 # 15-setup-oh-my-zsh.sh
-  - source: /oh-my-zsh/*
+  - glob: /oh-my-zsh/*
     dest: ~/.oh-my-zsh/custom
-  - source: /oh-my-zsh-plugins/*
+  - glob: /oh-my-zsh-plugins/*
     dest: ~/.oh-my-zsh/custom/plugins
   - source-list: /zsh-bundles.txt
     dest: ~/.oh-my-zsh/custom/plugins
 
 # 20-setup-vim.shh
-  - source: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  - url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
     dest: ~/.vim/autoload/pathogen.vim
     update: false
   - source: /vim/after
@@ -21,12 +21,12 @@ files:
     dest: ~/.vim/bundle
 
 # 30-setup-dotfiles.sh
-  - source: /files/*
+  - glob: /files/*
     dest: ~
     dot-prefix: true
 
 # 40-setup-binfiles.sh
-  - source: /binfiles/*
+  - glob: /binfiles/*
     dest: ~/bin
 
 # 50-setup-confs.sh
