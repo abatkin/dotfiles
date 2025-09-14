@@ -1,3 +1,5 @@
+remotes:
+  - url: https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64
 files:
 # 10-download-oh-my-zsh.sh
   - repo: https://github.com/robbyrussell/oh-my-zsh.git
