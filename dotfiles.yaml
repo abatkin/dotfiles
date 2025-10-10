@@ -1,5 +1,8 @@
 remotes:
   - url: https://github.com/jqlang/jq/releases/download/jq-1.8.1/jq-linux-amd64
+  - url: https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-win64.zip
+    extract: true
+    root: nvim-win64/bin
 files:
 # 10-download-oh-my-zsh.sh
   - repo: https://github.com/robbyrussell/oh-my-zsh.git
