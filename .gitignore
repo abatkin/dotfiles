@@ -1,3 +1,4 @@
+/remotes.d/
 *.swp
 
 nvim/lazy-lock.json
