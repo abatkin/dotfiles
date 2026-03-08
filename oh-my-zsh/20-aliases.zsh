@@ -21,8 +21,3 @@ alias xll='xl -l -s modified'
 alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && vim "$x" || true }; f'
 export SKIM_DEFAULT_COMMAND="rg --files || fd || find ."
 
-
-if [[ -e $HOME/.zshrc-local ]]; then
-  . $HOME/.zshrc-local
-fi
-
