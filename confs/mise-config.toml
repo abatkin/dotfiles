@@ -1,6 +1,7 @@
 [tools]
-helix = "latest"
-usage = "latest"
+cfn-lint = "latest"
+task = "latest"
+"aqua:jdx/usage" = "latest"
 
 [settings]
 experimental = true
