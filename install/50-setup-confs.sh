@@ -17,6 +17,12 @@ if [[ ! -e $HOME/.config/mise/config.toml ]] ; then
   cp $CONFS_DIR/mise/empty-config.toml $HOME/.config/mise/config.toml
 fi
 
+if [[ ! -e $HOME/.config/atuin/config.toml ]]; then
+  mkdir -p $HOME/.config/atuin
+  echo "Copying template atuin config to ~/.config/atuin/config.toml"
+  cp $CONFS_DIR/atuin.toml $HOME/.config/atuin/config.toml
+fi
+
 $INSTALL_DOTFILE $DOTFILES_ROOT nvim .config/nvim
 
 if [[ ! -e $HOME/.config/launch-entries.ini ]]; then

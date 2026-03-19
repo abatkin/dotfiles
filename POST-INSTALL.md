@@ -32,5 +32,5 @@ mise use -g aqua:cli/cli
 Put the following into `~/.zshrc-local-post`:
 
 ```shell
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-ai --disable-up-arrow)"
 ```
