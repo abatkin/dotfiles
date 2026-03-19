@@ -1,0 +1,8 @@
+[tools]
+"cfn-lint" = "latest"
+"task" = "latest"
+"atuin" = "latest"
+"aqua:jdx/usage" = "latest"
+"aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:starship/starship" = "latest"
+"aqua:zellij-org/zellij" = "latest"

@@ -1,8 +1,3 @@
-[tools]
-cfn-lint = "latest"
-task = "latest"
-"aqua:jdx/usage" = "latest"
-
 [settings]
 experimental = true
 auto_install = false
@@ -12,3 +7,4 @@ idiomatic_version_file_enable_tools = []
 
 [settings.python]
 uv_venv_auto = true
+
