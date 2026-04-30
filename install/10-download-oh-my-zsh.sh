@@ -1,13 +1,5 @@
-#!/bin/zsh
+#!/usr/bin/env bash
+# Stage: download/update oh-my-zsh into ~/.oh-my-zsh.
+# Sourced by install.sh; must not call `exit`.
 
-echo "Checking out oh-my-zsh"
-if [[ ! "$LOCAL_ONLY" == "true" ]]; then
-  if [[ ! -d ~/.oh-my-zsh ]]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  else
-    pushd ~/.oh-my-zsh
-    git pull
-    popd
-  fi
-fi
-
+clone_or_update https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"

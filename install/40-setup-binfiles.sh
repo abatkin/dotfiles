@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# Stage: link binfiles/* into ~/bin.
+# Sourced by install.sh; must not call `exit`.
 
-mkdir -p ~/bin
+ensure_dir "$HOME/bin"
 
-for FILE in $DOTFILES_ROOT/binfiles/*; do
-  BASENAME=$(basename $FILE)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/binfiles $BASENAME bin/$BASENAME
+for _file in "$DOTFILES_ROOT"/binfiles/*; do
+  link "$_file" "$HOME/bin/$(basename "$_file")"
 done
-
+unset _file

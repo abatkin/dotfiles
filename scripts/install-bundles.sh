@@ -1,56 +1,72 @@
-#!/bin/zsh
+#!/usr/bin/env bash
+#
+# Clone or update a list of git repositories into INSTALL_DIR.
+#
+# REPOLIST is a text file where each non-empty, non-comment line is:
+#     URL [name]
+# If `name` is omitted the directory name is derived from URL.
+#
+# Honors environment:
+#   LOCAL_ONLY=true   skip all network operations
+#   DRY_RUN=true      print actions only
+#   DOTFILES_LIB      directory containing common.sh (auto-detected if unset)
+#
+set -euo pipefail
 
 if [[ $# -lt 3 ]]; then
-  echo "Usage: $(basename $0) repolist installdir description [blacklist]"
+  echo "Usage: $(basename "$0") repolist installdir description [blacklist]" >&2
   exit 1
-fi
-
-if [[ "$LOCAL_ONLY" == "true" ]]; then
-  exit 0
 fi
 
 REPOLIST="$1"
 INSTALL_DIR="$2"
 DESCRIPTION="$3"
-BLACKLIST="$4"
+BLACKLIST="${4:-}"
 
-while IFS="\n" read -r BUNDLE_LINE || [[ -n "$BUNDLE_LINE" ]]; do
-  echo "$BUNDLE_LINE" | IFS=" " read -r BUNDLE_URL BUNDLE_NAME
-  if [[ -z $BUNDLE_NAME ]]; then
-    BUNDLE_NAME=$(echo "$BUNDLE_URL" | sed -e 's/.*\///' -e 's/\.git$//')
-  fi
+# Locate and source the shared helpers.
+if [[ -z "${DOTFILES_LIB:-}" ]]; then
+  DOTFILES_LIB="$(cd "$(dirname "$0")/../lib" && pwd -P)"
+fi
+# shellcheck disable=SC1091
+. "$DOTFILES_LIB/common.sh"
 
-  SKIP_MODULE=0
-  for EXCLUDE in $(echo $BLACKLIST); do
-    if [[ "$EXCLUDE" == "$BUNDLE_NAME" ]]; then
-      SKIP_MODULE=1
-    fi
+if [[ "${LOCAL_ONLY:-false}" == "true" ]]; then
+  log_info "[$DESCRIPTION] LOCAL_ONLY set; skipping bundle install"
+  exit 0
+fi
+
+if [[ ! -r "$REPOLIST" ]]; then
+  log_error "[$DESCRIPTION] cannot read repo list: $REPOLIST"
+  exit 1
+fi
+
+ensure_dir "$INSTALL_DIR"
+
+is_blacklisted() {
+  local name="$1" entry
+  for entry in $BLACKLIST; do
+    [[ "$entry" == "$name" ]] && return 0
   done
+  return 1
+}
 
-  if [[ $SKIP_MODULE == 0 ]]; then
-    if [[ ! -d $INSTALL_DIR/$BUNDLE_NAME ]]; then
-      echo "[$DESCRIPTION] Adding bundle for $BUNDLE_NAME"
-      git clone "$BUNDLE_URL" $INSTALL_DIR/$BUNDLE_NAME
-    else
-      pushd $INSTALL_DIR/$BUNDLE_NAME
-      echo "[$DESCRIPTION] Updating $BUNDLE_NAME ($BUNDLE_URL)"
-      CURRENT_BRANCH=$(git symbolic-ref -q --short HEAD) > /dev/null 2>&1
-      CURRENT_REMOTE=$(git config branch.${CURRENT_BRANCH}.remote) > /dev/null 2>&1
-      CURRENT_REMOTE_URL=$(git config remote.${CURRENT_REMOTE}.url) > /dev/null 2>&1
-      if [[ -z $CURRENT_REMOTE ]]; then
-        echo "[$DESCRIPTION] Unable to determine branch/remote for $BUNDLE_NAME"
-      else
-        if [[ $CURRENT_REMOTE_URL == $BUNDLE_URL ]]; then
-          git pull
-        else
-          echo "[$DESCRIPTION] Warning: Bundle $BUNDLE_NAME appears to have switched remotes ($CURRENT_REMOTE_URL => $BUNDLE_URL)"
-        fi
-      fi
-      popd
-    fi
-  else
-    echo "[$DESCRIPTION] Skipping locally blacklisted bundle $BUNDLE_NAME"
+while IFS= read -r line || [[ -n "$line" ]]; do
+  # Strip leading/trailing whitespace, skip blanks and comments.
+  line="${line#"${line%%[![:space:]]*}"}"
+  line="${line%"${line##*[![:space:]]}"}"
+  [[ -z "$line" || "$line" == \#* ]] && continue
+
+  read -r url name <<<"$line"
+  if [[ -z "${name:-}" ]]; then
+    name="${url##*/}"
+    name="${name%.git}"
   fi
-done < $REPOLIST
 
+  if is_blacklisted "$name"; then
+    log_info "[$DESCRIPTION] Skipping blacklisted bundle $name"
+    continue
+  fi
 
+  log_info "[$DESCRIPTION] $name"
+  clone_or_update "$url" "$INSTALL_DIR/$name"
+done < "$REPOLIST"

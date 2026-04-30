@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# Stage: install oh-my-zsh customizations and plugins.
+# Sourced by install.sh; must not call `exit`.
 
-for FILE in $DOTFILES_ROOT/oh-my-zsh/*; do
-  BASENAME=$(basename $FILE)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/oh-my-zsh $BASENAME .oh-my-zsh/custom/$BASENAME
+for _file in "$DOTFILES_ROOT"/oh-my-zsh/*; do
+  link "$_file" "$HOME/.oh-my-zsh/custom/$(basename "$_file")"
 done
+unset _file
 
-for PLUGIN in $DOTFILES_ROOT/oh-my-zsh-plugins/*; do
-  BASENAME=$(basename $PLUGIN)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/oh-my-zsh-plugins $BASENAME .oh-my-zsh/custom/plugins/$BASENAME
+for _plugin in "$DOTFILES_ROOT"/oh-my-zsh-plugins/*; do
+  link "$_plugin" "$HOME/.oh-my-zsh/custom/plugins/$(basename "$_plugin")"
 done
+unset _plugin
 
-$DOTFILES_SCRIPTS/install-bundles.sh $DOTFILES_ROOT/zsh-bundles.txt ~/.oh-my-zsh/custom/plugins ZSH
-
-
+"$DOTFILES_SCRIPTS/install-bundles.sh" \
+  "$DOTFILES_ROOT/zsh-bundles.txt" \
+  "$HOME/.oh-my-zsh/custom/plugins" \
+  ZSH
