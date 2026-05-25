@@ -46,8 +46,8 @@ if [[ -L "$_nvim_config" ]]; then
   return 0
 fi
 
-mkdir -p "$_nvim_config/lua/config" "$_nvim_config/lua/plugins"
-mkdir -p "$_nvim_local/lua/config" "$_nvim_local/lua/plugins"
+run mkdir -p "$_nvim_config/lua/config" "$_nvim_config/lua/plugins"
+run mkdir -p "$_nvim_local/lua/config" "$_nvim_local/lua/plugins"
 
 install_dotfile "$_nvim_dotfiles" init.lua .config/nvim/init.lua
 
@@ -62,7 +62,7 @@ done
 
 if [[ ! -e "$_nvim_config/lazyvim.json" ]]; then
   echo "Creating $_nvim_config/lazyvim.json"
-  echo '{"extras":[],"install_version":7,"news":{},"version":8}' > "$_nvim_config/lazyvim.json"
+  write_file '{"extras":[],"install_version":7,"news":{},"version":8}' "$_nvim_config/lazyvim.json"
 fi
 
 unset _nvim_config _nvim_dotfiles _nvim_local _f

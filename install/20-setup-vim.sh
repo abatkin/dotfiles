@@ -4,8 +4,8 @@
 
 if [[ ! -e ~/.vim/autoload/pathogen.vim && "$LOCAL_ONLY" != "true" ]]; then
   echo "Installing Pathogen"
-  mkdir -p ~/.vim/autoload
-  curl -Sso ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  run mkdir -p ~/.vim/autoload
+  run curl -Sso ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
   cat "$DOTFILES_ROOT/vim/notes.txt"
 fi
 

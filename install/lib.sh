@@ -1,6 +1,29 @@
 #!/bin/bash
 # Shared functions sourced by install.sh before running each installer.
 
+# run <cmd> [args...]
+#
+# Executes a command, or prints it prefixed with [dry-run] if DRY_RUN=true.
+run() {
+  if [[ "$DRY_RUN" == "true" ]]; then
+    echo "[dry-run]" "$@"
+  else
+    "$@"
+  fi
+}
+
+# write_file <content> <dest>
+#
+# Writes content to dest (with a trailing newline), or prints the action if DRY_RUN=true.
+write_file() {
+  local content=$1 dest=$2
+  if [[ "$DRY_RUN" == "true" ]]; then
+    echo "[dry-run] write $dest"
+  else
+    printf '%s\n' "$content" > "$dest"
+  fi
+}
+
 # install_dotfile <src_dir> <src_file> <dest_relative_to_home>
 #
 # Creates a symlink at ~/<dest> pointing to <src_dir>/<src_file>.
@@ -19,15 +42,15 @@ install_dotfile() {
 
   if [[ -e "$target" ]]; then
     echo "Backing up $dest to $dest.old"
-    mv "$target" "$target.old"
+    run mv "$target" "$target.old"
   fi
 
   local target_dir
   target_dir=$(dirname "$target")
-  [[ -d "$target_dir" ]] || mkdir -p "$target_dir"
+  [[ -d "$target_dir" ]] || run mkdir -p "$target_dir"
 
   echo "Setting up $target"
-  ln -s "$src" "$target"
+  run ln -s "$src" "$target"
 }
 
 # install_bundles <repo_list_file> <install_dir> <description> [blacklist]
@@ -58,7 +81,7 @@ install_bundles() {
 
     if [[ ! -d "$install_dir/$name" ]]; then
       echo "[$description] Cloning $name"
-      git clone "$url" "$install_dir/$name"
+      run git clone "$url" "$install_dir/$name"
     else
       echo "[$description] Updating $name"
       local branch remote remote_url
@@ -68,7 +91,7 @@ install_bundles() {
       if [[ -z "$remote" ]]; then
         echo "[$description] Unable to determine branch/remote for $name"
       elif [[ "$remote_url" == "$url" ]]; then
-        git -C "$install_dir/$name" pull
+        run git -C "$install_dir/$name" pull
       else
         echo "[$description] Warning: $name remote changed ($remote_url => $url)"
       fi
