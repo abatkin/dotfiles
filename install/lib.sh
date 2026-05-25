@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # Shared functions sourced by install.sh before running each installer.
 
 # install_dotfile <src_dir> <src_file> <dest_relative_to_home>
@@ -47,7 +47,7 @@ install_bundles() {
     [[ -z "$name" ]] && name=${url##*/} && name=${name%.git}
 
     local skip=0
-    for exclude in ${=blacklist}; do
+    for exclude in $blacklist; do
       [[ "$exclude" == "$name" ]] && skip=1 && break
     done
 

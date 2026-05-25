@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 [[ -e ~/.dotfiles-local ]] && source ~/.dotfiles-local
 

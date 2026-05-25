@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 echo "Checking out oh-my-zsh"
 if [[ "$LOCAL_ONLY" != "true" ]]; then

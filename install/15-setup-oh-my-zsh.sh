@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 for _file in "$DOTFILES_ROOT/oh-my-zsh/"*; do
   install_dotfile "$DOTFILES_ROOT/oh-my-zsh" "$(basename $_file)" ".oh-my-zsh/custom/$(basename $_file)"

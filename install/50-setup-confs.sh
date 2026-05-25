@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 mkdir -p ~/.config/kitty
 install_dotfile "$DOTFILES_ROOT/confs" kitty.conf .config/kitty/kitty.conf

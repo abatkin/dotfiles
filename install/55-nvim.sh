@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 _nvim_config=~/.config/nvim
 _nvim_dotfiles="$DOTFILES_ROOT/nvim"

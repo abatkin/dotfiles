@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
 
-export DOTFILES_ROOT=${0:A:h}
+export DOTFILES_ROOT=$(cd "$(dirname "$0")" && pwd)
 
 source "$DOTFILES_ROOT/install/lib.sh"
 
