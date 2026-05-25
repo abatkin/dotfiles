@@ -1,12 +1,12 @@
 # Post Installation Tasks
 
 
-## Installing rofi
+## rofi
 1. Install [rofi](https://github.com/davatorium/rofi) from somewhere ([wayland fork](https://github.com/lbonn/rofi))
 2. Symlink whichever `rofi` you want into `~/bin/rofi`
 3. Customize `~/.config/launch-entries.ini`
 
-## Installing Starship, mcfly and zoxide
+## Installing CLI tools and enhancements
 1. Install [rust](https://www.rust-lang.org/tools/install) - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 2. Install [mise](https://mise.jdx.dev/installing-mise.html) - `curl https://mise.run | sh`
 3. Install [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
