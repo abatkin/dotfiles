@@ -8,3 +8,8 @@ map({ "i", "n", "s" }, "<esc>", function()
 	LazyVim.cmp.actions.snippet_stop()
 	return "<esc>"
 end, { expr = true, desc = "Escape" })
+
+local includefile = vim.fn.expand("~/.config/nvim-local/lua/config/keymaps.lua")
+if vim.fn.filereadable(includefile) == 1 then
+	dofile(includefile)
+end

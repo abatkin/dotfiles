@@ -6,19 +6,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+-- Add machine-local nvim config to rtp so its lua/plugins/ files are picked up
+-- alongside dotfiles plugins by the single { import = "plugins" } below.
+local nvim_local = vim.fn.expand("~/.config/nvim-local")
+if vim.uv.fs_stat(nvim_local) then
+	vim.opt.rtp:prepend(nvim_local)
+end
+
 require("lazy").setup({
 	spec = {
-		-- add LazyVim and import its plugins
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		-- import any extras modules here
-		-- { import = "lazyvim.plugins.extras.lang.typescript" },
-		-- { import = "lazyvim.plugins.extras.lang.json" },
-		-- { import = "lazyvim.plugins.extras.ui.mini-animate" },
 		{ import = "lazyvim.plugins.extras.util.project" },
 		{ import = "lazyvim.plugins.extras.test.core" },
 		{ import = "lazyvim.plugins.extras.lang.go" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
-		-- import/override with your plugins
+		-- Imports lua/plugins/*.lua from both ~/.config/nvim and ~/.config/nvim-local
 		{ import = "plugins" },
 	},
 	defaults = {

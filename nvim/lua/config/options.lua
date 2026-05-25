@@ -6,7 +6,7 @@ local opt = vim.opt
 
 opt.showmatch = true
 
-local includefile = vim.fn.expand("~/.nvim-local-pre.lua")
+local includefile = vim.fn.expand("~/.config/nvim-local/lua/config/options.lua")
 if vim.fn.filereadable(includefile) == 1 then
 	dofile(includefile)
 end
