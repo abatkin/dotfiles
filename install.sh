@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/zsh
 
-export DOTFILES_ROOT=$(cd $(dirname $0); pwd -P)
-export DOTFILES_SCRIPTS=$DOTFILES_ROOT/scripts
+export DOTFILES_ROOT=${0:A:h}
 
-for INSTALLER in $DOTFILES_ROOT/install/*.sh; do
-  $INSTALLER
+source "$DOTFILES_ROOT/install/lib.sh"
+
+for _installer in "$DOTFILES_ROOT"/install/[0-9]*.sh; do
+  echo "==> $(basename $_installer)"
+  source "$_installer"
 done
-
+unset _installer

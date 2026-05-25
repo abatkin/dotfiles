@@ -1,15 +1,11 @@
-#!/bin/sh
+#!/bin/zsh
 
-for FILE in $DOTFILES_ROOT/oh-my-zsh/*; do
-  BASENAME=$(basename $FILE)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/oh-my-zsh $BASENAME .oh-my-zsh/custom/$BASENAME
+for _file in "$DOTFILES_ROOT/oh-my-zsh/"*; do
+  install_dotfile "$DOTFILES_ROOT/oh-my-zsh" "$(basename $_file)" ".oh-my-zsh/custom/$(basename $_file)"
 done
 
-for PLUGIN in $DOTFILES_ROOT/oh-my-zsh-plugins/*; do
-  BASENAME=$(basename $PLUGIN)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/oh-my-zsh-plugins $BASENAME .oh-my-zsh/custom/plugins/$BASENAME
+for _plugin in "$DOTFILES_ROOT/oh-my-zsh-plugins/"*; do
+  install_dotfile "$DOTFILES_ROOT/oh-my-zsh-plugins" "$(basename $_plugin)" ".oh-my-zsh/custom/plugins/$(basename $_plugin)"
 done
 
-$DOTFILES_SCRIPTS/install-bundles.sh $DOTFILES_ROOT/zsh-bundles.txt ~/.oh-my-zsh/custom/plugins ZSH
-
-
+install_bundles "$DOTFILES_ROOT/zsh-bundles.txt" ~/.oh-my-zsh/custom/plugins ZSH

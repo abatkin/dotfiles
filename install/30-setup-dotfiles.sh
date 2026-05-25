@@ -1,7 +1,5 @@
-#!/bin/sh
+#!/bin/zsh
 
-for FILE in $DOTFILES_ROOT/files/*; do
-  BASENAME=$(basename $FILE)
-  $DOTFILES_SCRIPTS/install-dotfile.sh $DOTFILES_ROOT/files $BASENAME .$BASENAME
+for _file in "$DOTFILES_ROOT/files/"*; do
+  install_dotfile "$DOTFILES_ROOT/files" "$(basename $_file)" ".$(basename $_file)"
 done
-
