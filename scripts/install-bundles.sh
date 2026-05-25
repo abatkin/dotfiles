@@ -14,7 +14,7 @@ INSTALL_DIR="$2"
 DESCRIPTION="$3"
 BLACKLIST="$4"
 
-while IFS="\n" read -r BUNDLE_LINE || [[ -n "$BUNDLE_LINE" ]]; do
+while IFS=$'\n' read -r BUNDLE_LINE || [[ -n "$BUNDLE_LINE" ]]; do
   echo "$BUNDLE_LINE" | IFS=" " read -r BUNDLE_URL BUNDLE_NAME
   if [[ -z $BUNDLE_NAME ]]; then
     BUNDLE_NAME=$(echo "$BUNDLE_URL" | sed -e 's/.*\///' -e 's/\.git$//')
