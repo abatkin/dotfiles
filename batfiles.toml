@@ -1,0 +1,175 @@
+# Batfiles manifest for these dotfiles.
+#
+# This covers the parts of install.sh that only touch local files. Anything
+# that reaches the network -- the oh-my-zsh checkout, pathogen, and the two
+# bundle lists -- is still install.sh's, because batfiles cannot express it
+# yet. See BATFILES.md for the full mapping and what is still missing.
+#
+# Actions run in declaration order, and the order below is the order the
+# numbered installers run in.
+
+# --- 15-setup-oh-my-zsh.sh ------------------------------------------------
+# Both of these want ~/.oh-my-zsh to already exist, which is
+# 10-download-oh-my-zsh.sh's job. Batfiles will create the custom directories
+# under it either way, so run install.sh first on a fresh machine.
+
+[[actions]]
+type = "symlink-dir"
+id = "omz-custom"
+group = "oh-my-zsh"
+source-dir = "oh-my-zsh"
+dest-dir = "~/.oh-my-zsh/custom"
+
+[[actions]]
+type = "symlink-dir"
+id = "omz-plugins"
+group = "oh-my-zsh"
+source-dir = "oh-my-zsh-plugins"
+dest-dir = "~/.oh-my-zsh/custom/plugins"
+
+# --- 20-setup-vim.sh ------------------------------------------------------
+# One link to the whole directory, matching what install_dotfile did.
+
+[[actions]]
+type = "symlink"
+id = "vim-after"
+group = "vim"
+source = "vim/after"
+dest = "~/.vim/after"
+
+# --- 30-setup-dotfiles.sh -------------------------------------------------
+
+[[actions]]
+type = "symlink-dir"
+id = "rcfiles"
+group = "home"
+source-dir = "files"
+dest-dir = "~"
+dot-prefix = true
+
+# --- 40-setup-binfiles.sh -------------------------------------------------
+# The mkdir the script does first is what dest-dir already means.
+
+[[actions]]
+type = "symlink-dir"
+id = "binfiles"
+group = "bin"
+source-dir = "binfiles"
+dest-dir = "~/bin"
+
+# --- 50-setup-confs.sh ----------------------------------------------------
+# The script's mkdir calls are all parents of a destination, which every
+# action creates on its own.
+
+[[actions]]
+type = "symlink"
+id = "kitty"
+group = "confs"
+source = "confs/kitty.conf"
+dest = "~/.config/kitty/kitty.conf"
+
+[[actions]]
+type = "symlink"
+id = "starship"
+group = "confs"
+source = "confs/starship.toml"
+dest = "~/.config/starship.toml"
+
+[[actions]]
+type = "symlink"
+id = "rofi"
+group = "confs"
+source = "confs/config.rasi"
+dest = "~/.config/rofi/config.rasi"
+
+# confs/mise holds three files and only two of them are linked, so these are
+# written out rather than done as one symlink-dir.
+
+[[actions]]
+type = "symlink"
+id = "mise-default-apps"
+group = "confs"
+source = "confs/mise/default-apps.toml"
+dest = "~/.config/mise/conf.d/default-apps.toml"
+
+[[actions]]
+type = "symlink"
+id = "mise-default-settings"
+group = "confs"
+source = "confs/mise/default-settings.toml"
+dest = "~/.config/mise/conf.d/default-settings.toml"
+
+# The three templates the script copied behind an `if [[ ! -e ]]` guard. That
+# guard is what `copy` means: it seeds where nothing is and keeps what it
+# finds.
+
+[[actions]]
+type = "copy"
+id = "mise-config"
+group = "confs"
+source = "confs/mise/empty-config.toml"
+dest = "~/.config/mise/config.toml"
+
+[[actions]]
+type = "copy"
+id = "atuin-config"
+group = "confs"
+source = "confs/atuin.toml"
+dest = "~/.config/atuin/config.toml"
+
+[[actions]]
+type = "copy"
+id = "launch-entries"
+group = "confs"
+source = "confs/launch-entries.ini"
+dest = "~/.config/launch-entries.ini"
+
+# --- 55-nvim.sh -----------------------------------------------------------
+# The script's guard against ~/.config/nvim being a whole-directory symlink
+# has no equivalent here; batfiles refuses the destination instead. See
+# BATFILES.md.
+
+[[actions]]
+type = "symlink"
+id = "nvim-init"
+group = "nvim"
+source = "nvim/init.lua"
+dest = "~/.config/nvim/init.lua"
+
+[[actions]]
+type = "symlink-dir"
+id = "nvim-config"
+group = "nvim"
+source-dir = "nvim/lua/config"
+dest-dir = "~/.config/nvim/lua/config"
+
+[[actions]]
+type = "symlink-dir"
+id = "nvim-plugins"
+group = "nvim"
+source-dir = "nvim/lua/plugins"
+dest-dir = "~/.config/nvim/lua/plugins"
+
+# The script wrote this file inline; batfiles seeds it from a checked-in copy.
+
+[[actions]]
+type = "copy"
+id = "nvim-lazyvim-json"
+group = "nvim"
+source = "nvim/seed/lazyvim.json"
+dest = "~/.config/nvim/lazyvim.json"
+
+# ~/.config/nvim-local is where machine-local nvim files go. Nothing installs
+# into it, so it has to be asked for outright.
+
+[[actions]]
+type = "create-dir"
+id = "nvim-local-config"
+group = "nvim"
+dest = "~/.config/nvim-local/lua/config"
+
+[[actions]]
+type = "create-dir"
+id = "nvim-local-plugins"
+group = "nvim"
+dest = "~/.config/nvim-local/lua/plugins"
