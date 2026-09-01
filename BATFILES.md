@@ -54,12 +54,14 @@ the manifest is shorter than the script rather than a translation of it:
 
 ## What is still install.sh's
 
-Four things, all of them network work:
+Four things, all of them network work. Three are waiting on an action that does
+not exist yet; pathogen is not, and is here only because adoption of the whole
+manifest happens once, at step 4.8:
 
 | Installer                    | What it does                                     | Blocked on            |
 |------------------------------|--------------------------------------------------|-----------------------|
 | `10-download-oh-my-zsh.sh`   | clone or pull oh-my-zsh into `~/.oh-my-zsh`      | `git-clone`, step 4.3 |
-| `20-setup-vim.sh` (part)     | `curl` pathogen into `~/.vim/autoload`           | `fetch-url`, step 4.1 |
+| `20-setup-vim.sh` (part)     | `curl` pathogen into `~/.vim/autoload`           | nothing: `fetch-file` landed at step 4.1 |
 | `20-setup-vim.sh` (part)     | `vim/bundles.txt` into `~/.vim/bundle`           | `git-clone-list`, steps 4.4 and 4.5 |
 | `15-setup-oh-my-zsh.sh` (part) | `zsh-bundles.txt` into `~/.oh-my-zsh/custom/plugins` | `git-clone-list`, steps 4.4 and 4.5 |
 
