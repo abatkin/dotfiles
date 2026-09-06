@@ -1,6 +1,20 @@
 # Post Installation Tasks
 
 
+## YouCompleteMe
+
+`vim-bundles` clones YouCompleteMe but does not build it, and it is unusable
+until it is built. Batfiles clones no submodules either, so fetch those first:
+
+```shell
+git -C ~/.vim/bundle/YouCompleteMe submodule update --init --recursive
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer --go-completer --rust-completer --java-completer --ts-completer
+```
+
+That needs `cmake gcc-g++ python3-devel npm`, on top of the basic development
+tools (`groupinstall 'development tools'`).
+
 ## rofi
 1. Install [rofi](https://github.com/davatorium/rofi) from somewhere ([wayland fork](https://github.com/lbonn/rofi))
 2. Symlink whichever `rofi` you want into `~/bin/rofi`

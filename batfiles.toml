@@ -1,17 +1,29 @@
 # Batfiles manifest for these dotfiles.
 #
-# This covers the parts of install.sh that only touch local files. Anything
-# that reaches the network -- the oh-my-zsh checkout, pathogen, and the two
-# bundle lists -- is still install.sh's, because batfiles cannot express it
-# yet. See BATFILES.md for the full mapping and what is still missing.
+# This is the whole installation. It replaces install.sh and the numbered
+# installers under install/, which are gone; see README.md for how to run it.
 #
 # Actions run in declaration order, and the order below is the order the
-# numbered installers run in.
+# numbered installers ran in, which is also the order correctness requires:
+# oh-my-zsh is cloned before anything installs into it.
+
+# --- 10-download-oh-my-zsh.sh ---------------------------------------------
+# Has to come first. Every action creates the parents of what it installs, so
+# a symlink-dir into ~/.oh-my-zsh/custom would create ~/.oh-my-zsh as a plain
+# directory, and a plain directory is a destination git-clone refuses by name.
+#
+# The URL is the one the existing clones were made with. Batfiles never
+# compares it against a clone's configured remote, so it is written the way
+# the script wrote it rather than as the address that redirects today.
+
+[[actions]]
+type = "git-clone"
+id = "oh-my-zsh"
+group = "oh-my-zsh"
+source = "https://github.com/robbyrussell/oh-my-zsh.git"
+dest = "~/.oh-my-zsh"
 
 # --- 15-setup-oh-my-zsh.sh ------------------------------------------------
-# Both of these want ~/.oh-my-zsh to already exist, which is
-# 10-download-oh-my-zsh.sh's job. Batfiles will create the custom directories
-# under it either way, so run install.sh first on a fresh machine.
 
 [[actions]]
 type = "symlink-dir"
@@ -27,7 +39,28 @@ group = "oh-my-zsh"
 source-dir = "oh-my-zsh-plugins"
 dest-dir = "~/.oh-my-zsh/custom/plugins"
 
+# install_bundles, over the same list file it always read. Everything under
+# custom/ is covered by oh-my-zsh's own .gitignore, so neither these clones
+# nor the symlinks above make the oh-my-zsh checkout dirty.
+
+[[actions]]
+type = "git-clone-list"
+id = "zsh-bundles"
+group = "oh-my-zsh"
+source = "zsh-bundles.txt"
+dest-dir = "~/.oh-my-zsh/custom/plugins"
+
 # --- 20-setup-vim.sh ------------------------------------------------------
+# No sha256: the URL names a file on a branch, so pinning a digest would fail
+# on every upstream change.
+
+[[actions]]
+type = "fetch-file"
+id = "pathogen"
+group = "vim"
+source = "https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
+dest = "~/.vim/autoload/pathogen.vim"
+
 # One link to the whole directory, matching what install_dotfile did.
 
 [[actions]]
@@ -36,6 +69,16 @@ id = "vim-after"
 group = "vim"
 source = "vim/after"
 dest = "~/.vim/after"
+
+# BLACKLIST_VIM_MODULES has no equivalent: skipping one entry of a list is an
+# address form batfiles has specified but not built. See README.md.
+
+[[actions]]
+type = "git-clone-list"
+id = "vim-bundles"
+group = "vim"
+source = "vim/bundles.txt"
+dest-dir = "~/.vim/bundle"
 
 # --- 30-setup-dotfiles.sh -------------------------------------------------
 
@@ -127,7 +170,7 @@ dest = "~/.config/launch-entries.ini"
 # --- 55-nvim.sh -----------------------------------------------------------
 # The script's guard against ~/.config/nvim being a whole-directory symlink
 # has no equivalent here; batfiles refuses the destination instead. See
-# BATFILES.md.
+# README.md.
 
 [[actions]]
 type = "symlink"
