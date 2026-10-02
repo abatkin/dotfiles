@@ -10,7 +10,7 @@
 # --- 10-download-oh-my-zsh.sh ---------------------------------------------
 # Has to come first. Every action creates the parents of what it installs, so
 # a symlink-dir into ~/.oh-my-zsh/custom would create ~/.oh-my-zsh as a plain
-# directory, and a plain directory is a destination git-clone refuses by name.
+# directory, which git-clone would then back up and replace with the clone.
 #
 # The URL is the one the existing clones were made with. Batfiles never
 # compares it against a clone's configured remote, so it is written the way
@@ -70,8 +70,8 @@ group = "vim"
 source = "vim/after"
 dest = "~/.vim/after"
 
-# BLACKLIST_VIM_MODULES has no equivalent: skipping one entry of a list is an
-# address form batfiles has specified but not built. See README.md.
+# BLACKLIST_VIM_MODULES is a condition on the entry's line in bundles.txt
+# instead. See README.md.
 
 [[actions]]
 type = "git-clone-list"

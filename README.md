@@ -9,20 +9,29 @@ script any more.
 
 # Installing #
 
-On a fresh machine:
+On a fresh machine, one command installs batfiles to `~/.local/bin`, clones
+this repository to `~/dotfiles`, and syncs it:
 
 ```shell
-git clone https://github.com/abatkin/dotfiles ~/dotfiles
+curl -fsSL https://batfiles.dev/install.sh | sh -s -- clone https://github.com/abatkin/dotfiles
+```
 
-# batfiles publishes no binaries yet, so build it:
-git clone https://github.com/abatkin/batfiles.git ~/code/batfiles
-cargo install --path ~/code/batfiles
+`clone` checks out the default branch, so this works once `batfiles.toml` is
+on it. After that, `batfiles update` upgrades batfiles itself; nothing else
+does.
 
+On a machine that already has the checkout, run `sync` from anywhere. The
+repository defaults to `~/dotfiles`, so it needs no arguments:
+
+```shell
 batfiles sync
 ```
 
-The repository defaults to `~/dotfiles`, so `sync` needs no arguments. To see
-what it would do without doing any of it:
+A machine set up by the old `install.sh` already has links into `~/dotfiles`,
+and batfiles accepts them as they are. So on such a machine `sync` only updates
+the clones and repairs anything that has drifted.
+
+To see what it would do without doing any of it:
 
 ```shell
 batfiles sync --dry-run
@@ -45,35 +54,47 @@ The manifest is a translation of the numbered installers, and the comments in
 `batfiles.toml` say which installer each action came from. Five places where it
 is not a faithful translation, listed so they are not rediscovered later.
 
-**Nothing is backed up.** `install_dotfile` moved an existing regular file to
-`<name>.old` and carried on. Batfiles refuses instead, and stops the whole run:
+**Backups are named differently.** `install_dotfile` moved whatever was in the
+way to `<name>.old`. Batfiles renames it to
+`<name>.batfiles-backup-<timestamp>` beside it, never overwriting an earlier
+backup, and then installs. `--no-overwrite` leaves such things alone instead,
+and `--interactive` asks about each one. Templates that are `copy` actions
+(the mise, atuin, launch-entries, and lazyvim.json seeds) are never replaced;
+they install only where nothing is.
 
-    error: ~/.zshrc already exists and is a regular file; move it aside and run sync again
+**A failed `oh-my-zsh` update stops the run.** `install.sh` guarded the network
+work behind `LOCAL_ONLY`; here, a `sync` with no network fails at `oh-my-zsh`,
+the first action, before any symlink. To sync offline, skip it:
 
-There is no backup policy yet. The practical consequence is that adopting this
-on a machine with hand-written dotfiles means moving them aside by hand, one
-refusal at a time, since the run stops at the first one rather than reporting
-all of them.
+```shell
+batfiles sync --skip-action oh-my-zsh
+```
 
-**A failed download or clone stops the run too.** `install.sh` guarded the
-network work behind `LOCAL_ONLY` and never let it break the local half; here,
-a `sync` with no network fails at `oh-my-zsh` and never reaches a single
-symlink. Individual entries of the two bundle lists are the exception -- one
-unreachable plugin is a warning, and the rest of the list still installs.
+The rest of the network work is fine without it: pathogen is fetched only when
+it is missing, and an unreachable entry of either bundle list is a warning
+while the rest of the list carries on.
 
 **`BLACKLIST_VIM_MODULES` and `~/.dotfiles-local` do nothing now.** Nothing
-reads that file any more. The per-machine vim bundle blacklist wants to disable
-one entry of a bundle list, which is `disable-action vim-bundles.YouCompleteMe`
--- an address form batfiles has specified but not built.
+reads that file any more. To leave a bundle off some machines, give its line in
+`vim/bundles.txt` a condition:
+
+```text
+https://github.com/Valloric/YouCompleteMe.git unless="vars.skip_ycm"
+```
+
+and on each machine that should not have it, `batfiles vars set skip_ycm true`.
+`vars.` makes the variable optional, so machines that never set it get the
+bundle.
 
 **Submodules are not cloned**, by `git-clone-list` or by anything else. Neither
 did `install_bundles`, so nothing regressed, but it is why YouCompleteMe needs
 the `submodule update` in `POST-INSTALL.md` before it will build.
 
-**`55-nvim.sh`'s directory-symlink guard is gone.** Batfiles follows a symlinked
-parent component by design, so on the old whole-directory-symlink layout it
-would install *through* the link rather than refusing. That migration is done
-and the guard was vestigial.
+**`55-nvim.sh`'s directory-symlink guard is gone.** On the old layout, where
+`~/.config/nvim` was itself a link into this repository, batfiles refuses
+rather than installing through it (`cannot install .../nvim/init.lua into
+~/.config/nvim/init.lua, which is inside it`). Remove the link and sync again.
+That migration is done, so the guard was vestigial.
 
 Two paths in this repository are still installed by nothing, exactly as under
 `install.sh`: `confs/statusline-command.sh` and `eclipse-customizations/`.
