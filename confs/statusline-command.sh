@@ -4,11 +4,8 @@
 #        5h & 7d rate limits, plus PR/agent state when present.
 # Docs: https://code.claude.com/docs/en/statusline
 #
-# Install:
-#   cp statusline.sh ~/.claude/statusline.sh
-#   chmod +x ~/.claude/statusline.sh
-# settings.json:
-#   { "statusLine": { "type": "command", "command": "~/.claude/statusline.sh", "padding": 1 } }
+# Installed by batfiles as ~/.claude/statusline-command.sh (the
+# claude-statusline action); see POST-INSTALL.md for the settings.json entry.
 #
 # Requires: jq
 

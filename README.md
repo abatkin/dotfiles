@@ -38,7 +38,7 @@ batfiles sync --dry-run
 ```
 
 Or a slice at a time, by group -- the groups are `oh-my-zsh`, `vim`, `home`,
-`bin`, `confs`, and `nvim`:
+`bin`, `confs`, `nvim`, and `claude`:
 
 ```shell
 batfiles apply-group --group nvim
@@ -96,8 +96,8 @@ rather than installing through it (`cannot install .../nvim/init.lua into
 ~/.config/nvim/init.lua, which is inside it`). Remove the link and sync again.
 That migration is done, so the guard was vestigial.
 
-Two paths in this repository are still installed by nothing, exactly as under
-`install.sh`: `confs/statusline-command.sh` and `eclipse-customizations/`.
+`eclipse-customizations/` is still installed by nothing, exactly as under
+`install.sh`.
 
 # Configuration Notes #
 

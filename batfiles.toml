@@ -167,6 +167,17 @@ group = "confs"
 source = "confs/launch-entries.ini"
 dest = "~/.config/launch-entries.ini"
 
+# --- Claude Code ---------------------------------------------------------
+# Only the status line script. ~/.claude/settings.json, which points Claude
+# Code at it, is left to each machine; see POST-INSTALL.md.
+
+[[actions]]
+type = "symlink"
+id = "claude-statusline"
+group = "claude"
+source = "confs/statusline-command.sh"
+dest = "~/.claude/statusline-command.sh"
+
 # --- 55-nvim.sh -----------------------------------------------------------
 # The script's guard against ~/.config/nvim being a whole-directory symlink
 # has no equivalent here; batfiles refuses the destination instead. See

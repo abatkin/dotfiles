@@ -20,6 +20,19 @@ tools (`groupinstall 'development tools'`).
 2. Symlink whichever `rofi` you want into `~/bin/rofi`
 3. Customize `~/.config/launch-entries.ini`
 
+## Claude Code status line
+`sync` links `~/.claude/statusline-command.sh`, but Claude Code only runs it
+once `~/.claude/settings.json` says to:
+
+```json
+"statusLine": {
+  "type": "command",
+  "command": "bash ~/.claude/statusline-command.sh"
+}
+```
+
+It needs `jq`.
+
 ## Installing CLI tools and enhancements
 1. Install [rust](https://www.rust-lang.org/tools/install) - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 2. Install [mise](https://mise.jdx.dev/installing-mise.html) - `curl https://mise.run | sh`
